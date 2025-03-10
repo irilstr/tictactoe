@@ -2,15 +2,15 @@ import { Button } from "./button";
 
 export default function StartGame() {
   return (
-    <div className="w-screen h-screen flex flex-row items-center justify-center">
+    <div className="w-screen h-screen flex flex-row items-center justify-center gap-4">
       <div>
-        <img src="elephant.png" alt="elephant" className="h-20 lg:h-40" />
+        <img src="elephant.png" alt="elephant" className="h-30 lg:h-40" />
       </div>
-      <div className="flex flex-col items-center justify-center">
-        <img src="lemur.png" alt="lemur" className="h-20 lg:h-40" />
+      <div className="flex flex-col items-center justify-center gap-2">
+        <img src="lemur.png" alt="lemur" className="h-30 lg:h-40" />
 
         <div className="border-4 border-[#0022FF] px-6 py-8 md:px-10 md:py-12">
-          <h1 className="text-3xl md:text-5xl font-bold text-center leading-[2.5rem] md:leading-[4rem] font-audiowide">
+          <h1 className="text-3xl md:text-5xl font-bold text-center leading-[2.5rem] md:leading-[4rem]">
             <span className="text-blue-700 drop-shadow-md">TIC</span> <br />
             <span className="text-yellow-400 drop-shadow-md">TAC</span> <br />
             <span className="text-pink-500 drop-shadow-md">TOE</span>
@@ -24,7 +24,7 @@ export default function StartGame() {
           START GAME
         </Button>
       </div>
-      <img src="tor.png" alt="tor" className="h-20 lg:h-40" />
+      <img src="tor.png" alt="tor" className="h-30 lg:h-40" />
     </div>
   );
 }
