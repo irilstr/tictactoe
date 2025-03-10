@@ -1,10 +1,10 @@
-import StartScreen from "./components/startScreen";
+import StartGame from "./components/startGame";
 
 function App() {
   return (
     <>
       <div className="h-screen flex flex-col bg-[#3CB4E8]">
-        <StartScreen />
+        <StartGame />
       </div>
     </>
   );
