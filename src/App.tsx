@@ -1,15 +1,12 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import Choose_player from "./components/choose_player";
+import StartGame from "./components/startGame";
 
 function App() {
-
   return (
-    <div>
-      <Choose_player />
-    </div>
+    <>
+      <div className="h-screen flex flex-col bg-[#3CB4E8]">
+        <StartGame />
+      </div>
+    </>
   );
 }
-
 export default App;
