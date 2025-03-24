@@ -6,10 +6,11 @@ interface GameProps {
   player1: string;
   player2: string;
 }
-function choose_player({ player1, player2 }: GameProps) {
+function Choose_player({ player1, player2 }: GameProps) {
   return `${player1},${player2}`;
 }
 const characters = ["Bjorn", "Elephant", "Lemur"];
+
 export default function velgKarakter() {
   //aner virkelig ikke om det er normalt å bruke så mange forskjellige states, men fuck it.
   const [player_1_btn, set_player_1_btn] = useState("Player 1");
@@ -36,7 +37,7 @@ export default function velgKarakter() {
 
       <div
         id="button_container"
-        className="flex flex-row justify-center content-evenly mt-25 flex gap-40 "
+        className="flex flex-row justify-center content-evenly mt-25 gap-40 "
       >
         <div className="relative">
           <Button
@@ -107,7 +108,7 @@ export default function velgKarakter() {
                   <button
                     key={img}
                     type="button"
-                    className="border border cursor-pointer hover:bg-blue-600"
+                    className="border cursor-pointer hover:bg-blue-600"
                     onClick={() => {
                       let selected_player = images[index];
                       if (selected_player !== player1) {
@@ -135,16 +136,16 @@ export default function velgKarakter() {
           )}
         </div>
         {visability && (
-          <div className="fixed left-1/2 top-3/4 transform -translate-x-1/2 bg-blue-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600 transition">
+          <div className="font-audiowide fixed left-1/2 top-3/4 transform -translate-x-1/2 bg-blue-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600 transition">
             <button
               id="begin_game"
               type="button"
               className=""
               onClick={() => {
-                const players = choose_player({ player1, player2 });
+                const players = Choose_player({ player1, player2 });
               }}
             >
-              begin game
+              Begin game
             </button>
           </div>
         )}

@@ -1,4 +1,4 @@
-import { Button } from "@/components/button";
+import { Button } from "./button";
 
 export default function StartGame() {
   return (
@@ -9,22 +9,30 @@ export default function StartGame() {
       <div className="flex flex-col items-center justify-center gap-2">
         <img src="lemur.png" alt="lemur" className="h-30 lg:h-40" />
 
-        <div className="border-4 border-[#0022FF] px-6 py-8 md:px-10 md:py-12">
+        <div className="border-4 border-[#000000] px-6 py-8 md:px-10 md:py-12">
           <h1 className="text-3xl md:text-5xl font-bold text-center leading-[2.5rem] md:leading-[4rem]">
-            <span className="text-blue-700 drop-shadow-md">TIC</span> <br />
-            <span className="text-yellow-400 drop-shadow-md">TAC</span> <br />
-            <span className="text-pink-500 drop-shadow-md">TOE</span>
+            <span className="text-blue-700 drop-shadow-md font-audiowide">
+              TIC
+            </span>{" "}
+            <br />
+            <span className="text-yellow-400 drop-shadow-md font-audiowide">
+              TAC
+            </span>{" "}
+            <br />
+            <span className="text-pink-500 drop-shadow-md font-audiowide">
+              TOE
+            </span>
           </h1>
         </div>
 
         <Button
           variant="outline"
-          className="mt-6 md:mt-10 bg-[#0022FF] border-[#0022FF] text-white"
+          className="font-audiowide mt-6 md:mt-10 bg-[#0022FF] border-[#000000] text-white"
         >
           START GAME
         </Button>
       </div>
-      <img src="tor.png" alt="tor" className="h-30 lg:h-40" />
+      <img src="Bjorn.png" alt="tor" className="h-30 lg:h-40" />
     </div>
   );
 }
