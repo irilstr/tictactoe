@@ -7,8 +7,9 @@ function App() {
   const [message, setMessage] = useState("");
   return (
     <>
-      <div className="h-screen flex flex-col bg-[#fdffff]">
-        <Choose_player />
+      <div className="h-screen flex flex-col bg-[#3CB4E8]">
+        <StartGame />
+
         {/* <Greeting name="Alice" onClick={() => setMessage("Hello, Alice!")} />
         <Greeting name="Bob" onClick={() => setMessage("Hello, Bob!")} />
 

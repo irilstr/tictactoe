@@ -107,7 +107,7 @@ export default function velgKarakter() {
                   <button
                     key={img}
                     type="button"
-                    className="border border cursor-pointer hover:bg-blue-600"
+                    className="border cursor-pointer hover:bg-blue-600"
                     onClick={() => {
                       let selected_player = images[index];
                       if (selected_player !== player1) {
@@ -135,7 +135,7 @@ export default function velgKarakter() {
           )}
         </div>
         {visability && (
-          <div className="fixed left-1/2 top-3/4 transform -translate-x-1/2 bg-blue-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600 transition">
+          <div className="font-audiowide fixed left-1/2 top-3/4 transform -translate-x-1/2 bg-blue-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600 transition">
             <button
               id="begin_game"
               type="button"
@@ -144,7 +144,7 @@ export default function velgKarakter() {
                 const players = choose_player({ player1, player2 });
               }}
             >
-              begin game
+              Begin game
             </button>
           </div>
         )}
