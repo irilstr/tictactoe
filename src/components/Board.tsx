@@ -1,5 +1,4 @@
 import { useState } from "react";
-import velgKarakter from "./Choose_player";
 
 const winningCombinations = [
   [0, 1, 2],
@@ -16,37 +15,73 @@ function getWinner(squares: Array<string | null>) {
   for (let combination of winningCombinations) {
     const [a, b, c] = combination;
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return { winner: squares[a], winningCombo: combination };
     }
   }
   return null;
 }
 
-export default function Board() {
+interface BoardProps {
+  player1: string;
+  player2: string;
+}
+
+export default function Board({ player1, player2 }: BoardProps) {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isPlayer1Turn, setIsPlayer1Turn] = useState(true);
+  const [winningCombo, setWinningCombo] = useState<number[] | null>(null);
 
   function handleSquareClick(index: number) {
-    if (board[index] || getWinner(board)) {
+    if (board[index] || winningCombo) {
       return;
     }
 
     const updatedBoard = [...board];
-    updatedBoard[index] = isPlayer1Turn ? "X" : "O";
+    updatedBoard[index] = isPlayer1Turn ? player1 : player2;
     setBoard(updatedBoard);
     setIsPlayer1Turn(!isPlayer1Turn);
+
+    const result = getWinner(updatedBoard);
+    if (result) {
+      setWinningCombo(result.winningCombo);
+    }
   }
 
   function getGameStatus() {
-    const winner = getWinner(board);
-    if (winner) return `Winner: ${winner}`;
+    const result = getWinner(board);
+    if (result) {
+      return (
+        <div className="flex items-center justify-center gap-3 text-2xl font-bold animate-bounce">
+          Winner:
+          <img
+            src={`/${result.winner}.png`}
+            alt={result.winner}
+            className="h-12 w-12 md:h-16 md:w-16"
+          />
+        </div>
+      );
+    }
+
     if (board.every((square) => square !== null)) return "Draw!";
-    return `Next player: ${isPlayer1Turn ? "X" : "O"}`;
+
+    const nextPlayerImage = isPlayer1Turn ? player1 : player2;
+
+    return (
+      <div className="flex items-center justify-center gap-3 text-xl text-white">
+        Next player:
+        <img
+          src={`/${nextPlayerImage}.png`}
+          alt={nextPlayerImage}
+          className="h-12 w-12 md:h-16 md:w-16"
+        />
+      </div>
+    );
   }
 
   function resetGame() {
     setBoard(Array(9).fill(null));
     setIsPlayer1Turn(true);
+    setWinningCombo(null); // Clear winning combo
   }
 
   return (
@@ -58,8 +93,8 @@ export default function Board() {
 
         <div
           className={`text-center mb-6 ${
-            getWinner(board)
-              ? "text-2xl font-bold text-green-400 animate-bounce"
+            winningCombo
+              ? "text-2xl font-bold text-white animate-bounce"
               : "text-xl text-white"
           }`}
         >
@@ -71,11 +106,17 @@ export default function Board() {
             <button
               key={index}
               onClick={() => handleSquareClick(index)}
-              className={`h-32 w-full bg-gray-800 rounded-md text-6xl font-light transition-colors duration-200 hover:bg-gray-700 ${
-                square === "X" ? "text-blue-400" : "text-pink-400"
-              }`}
+              className="h-32 w-full bg-gray-800 rounded-md text-6xl font-light transition-colors duration-200 hover:bg-gray-700 flex items-center justify-center"
             >
-              {square}
+              {square && (
+                <img
+                  src={`/${square}.png`}
+                  alt={square}
+                  className={`h-20 w-20 object-contain ${
+                    winningCombo?.includes(index) ? "animate-bounce" : ""
+                  }`}
+                />
+              )}
             </button>
           ))}
         </div>
