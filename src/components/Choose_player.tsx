@@ -6,10 +6,11 @@ interface GameProps {
   player1: string;
   player2: string;
 }
-function choose_player({ player1, player2 }: GameProps) {
+function Choose_player({ player1, player2 }: GameProps) {
   return `${player1},${player2}`;
 }
 const characters = ["Bjorn", "Elephant", "Lemur"];
+
 export default function velgKarakter() {
   //aner virkelig ikke om det er normalt å bruke så mange forskjellige states, men fuck it.
   const [player_1_btn, set_player_1_btn] = useState("Player 1");
@@ -36,7 +37,7 @@ export default function velgKarakter() {
 
       <div
         id="button_container"
-        className="flex flex-row justify-center content-evenly mt-25 flex gap-40 "
+        className="flex flex-row justify-center content-evenly mt-25 gap-40 "
       >
         <div className="relative">
           <Button
@@ -141,7 +142,7 @@ export default function velgKarakter() {
               type="button"
               className=""
               onClick={() => {
-                const players = choose_player({ player1, player2 });
+                const players = Choose_player({ player1, player2 });
               }}
             >
               Begin game

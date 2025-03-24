@@ -9,7 +9,7 @@ export default function StartGame() {
       <div className="flex flex-col items-center justify-center gap-2">
         <img src="lemur.png" alt="lemur" className="h-30 lg:h-40" />
 
-        <div className="border-4 border-[#0022FF] px-6 py-8 md:px-10 md:py-12">
+        <div className="border-4 border-[#000000] px-6 py-8 md:px-10 md:py-12">
           <h1 className="text-3xl md:text-5xl font-bold text-center leading-[2.5rem] md:leading-[4rem]">
             <span className="text-blue-700 drop-shadow-md font-audiowide">
               TIC
@@ -27,7 +27,7 @@ export default function StartGame() {
 
         <Button
           variant="outline"
-          className="font-audiowide mt-6 md:mt-10 bg-[#0022FF] border-[#0022FF] text-white"
+          className="font-audiowide mt-6 md:mt-10 bg-[#0022FF] border-[#000000] text-white"
         >
           START GAME
         </Button>
