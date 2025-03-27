@@ -1,26 +1,25 @@
-import StartGame from "./components/startGame";
-
+import { useState } from "react";
 import Choose_player from "./components/Choose_player";
 import Board from "./components/Board";
-// import DropDown from "./components/dropDown";
-import { useState } from "react";
 
 function App() {
-  const [startVisability, setStartVisability] = useState(true);
-  const [choosePlayerVisability, setChoosePlayerVisability] = useState(false);
-  const [BoardVisability, setBoardVisability] = useState(false);
-  const [message, setMessage] = useState("");
+  const [player1, setPlayer1] = useState<string | null>(null);
+  const [player2, setPlayer2] = useState<string | null>(null);
+
   return (
-    <>
-      <div className="h-screen flex flex-col bg-[#3CB4E8]">
-        <Board />
-
-        {/* <Greeting name="Alice" onClick={() => setMessage("Hello, Alice!")} />
-        <Greeting name="Bob" onClick={() => setMessage("Hello, Bob!")} />
-
-        <p>{message}</p> Viser meldingen når en knapp trykkes */}
-      </div>
-    </>
+    <div className="h-screen flex flex-col bg-[#3CB4E8]">
+      {!player1 || !player2 ? (
+        <Choose_player
+          onSelectPlayers={(p1, p2) => {
+            setPlayer1(p1);
+            setPlayer2(p2);
+          }}
+        />
+      ) : (
+        <Board player1={player1} player2={player2} />
+      )}
+    </div>
   );
 }
+
 export default App;

@@ -1,155 +1,134 @@
+import { useState, useEffect } from "react";
 import { Button } from "./button";
-import { useState } from "react";
-import { useEffect } from "react";
 
-interface GameProps {
-  player1: string;
-  player2: string;
+interface ChoosePlayerProps {
+  onSelectPlayers: (player1: string, player2: string) => void;
 }
-function Choose_player({ player1, player2 }: GameProps) {
-  return `${player1},${player2}`;
-}
-const characters = ["Bjorn", "Elephant", "Lemur"];
 
-export default function velgKarakter() {
-  //aner virkelig ikke om det er normalt å bruke så mange forskjellige states, men fuck it.
-  const [player_1_btn, set_player_1_btn] = useState("Player 1");
-  const [player_2_btn, set_player_2_btn] = useState("Player 2");
-  const [visability, setvisability] = useState(false);
-  const [player1, setplayer1] = useState("1");
-  const [player2, setplayer2] = useState("2");
+export default function Choose_player({ onSelectPlayers }: ChoosePlayerProps) {
+  const characters = ["Bjorn", "Elephant", "Lemur"];
+
+  const [player1, setPlayer1] = useState<string | null>(null);
+  const [player2, setPlayer2] = useState<string | null>(null);
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [error, setError] = useState<string>("");
-  const [images, setImages] = useState(characters);
 
   useEffect(() => {
-    if (images.includes(player1) && images.includes(player2)) {
-      setvisability(true);
+    if (player1 && player2 && player1 !== player2) {
+      setError(""); // Clear error if both players are unique
     }
   }, [player1, player2]);
 
   return (
-    <div id="alt" className="h-screen">
-      <div id="title" className="text-center mt-6">
-        <h1 className="font-audiowide text-4xl">Choose your player</h1>
-      </div>
+    <div className="h-screen flex flex-col items-center justify-center">
+      <h1 className="font-audiowide text-5xl text-center mt-6 mb-12">
+        Choose Your Player
+      </h1>
 
-      <div
-        id="button_container"
-        className="flex flex-row justify-center content-evenly mt-25 gap-40 "
-      >
-        <div className="relative">
+      {error && <p className="text-red-500 mt-4">{error}</p>}
+
+      <div className="flex gap-28 mt-8">
+        {/* Player 1 Dropdown */}
+        <div className="relative w-40">
           <Button
-            id="player_1_knapp"
-            onClick={() => {
-              setIsOpen1(!isOpen1);
-            }}
+            onClick={() => setIsOpen1(!isOpen1)}
             variant="outline"
-            className="mt-6 md:mt-10 bg-[#abe4f7] text-white
-                        font-audiowide text-cent cursor-pointer"
+            className="bg-[#abe4f7] text-black font-audiowide px-6 py-3 rounded w-full flex items-center justify-center"
           >
-            {player_1_btn}
+            {player1 ? (
+              <img
+                src={`/${player1}.png`}
+                alt={player1}
+                className="h-12 w-12 object-contain"
+              />
+            ) : (
+              "Player 1"
+            )}
           </Button>
-          {/* Dropdown-meny */}
+
           {isOpen1 && (
-            <div className="absolute mt-2 w-26">
-              <ul className="">
-                {images.map((img, index) => (
-                  <button
-                    key={img}
-                    type="button"
-                    className="border cursor-pointer hover:bg-blue-600"
-                    onClick={() => {
-                      let selected_player = images[index];
-                      if (selected_player !== player2) {
-                        setplayer1(selected_player);
-                        // images.splice(index, 1)
-                        setIsOpen1(!isOpen1);
-                        set_player_1_btn(img);
-                        setError("");
-                      } else {
-                        setError("Begge kan ikke være samme karakter");
-                      }
-                    }}
-                  >
-                    <img
-                      key={img + index.toString()}
-                      src={`${img}.png`}
-                      alt={`image-${index}`}
-                      className="h-30 lg:h-30"
-                    />
-                  </button>
-                ))}
-              </ul>
+            <div className="absolute top-full mt-2 w-full bg-white border rounded shadow-md max-h-64 overflow-y-auto p-2 z-10">
+              {characters.map((character) => (
+                <button
+                  key={character}
+                  onClick={() => {
+                    if (character === player2) {
+                      setError("Players cannot be the same character");
+                    } else {
+                      setPlayer1(character);
+                      setIsOpen1(false);
+                      setError("");
+                    }
+                  }}
+                  className="block w-full text-black hover:bg-blue-200 mb-2 last:mb-0"
+                >
+                  <img
+                    src={`/${character}.png`}
+                    alt={character}
+                    className="h-20 mx-auto"
+                  />
+                </button>
+              ))}
             </div>
           )}
-        </div>
-        <div className="position absolute">
-          <span className="text-center">{error}</span>
         </div>
 
-        <div className="relative">
+        {/* Player 2 Dropdown */}
+        <div className="relative w-40">
           <Button
-            onClick={() => {
-              setIsOpen2(!isOpen2);
-            }}
+            onClick={() => setIsOpen2(!isOpen2)}
             variant="outline"
-            className="mt-6 md:mt-10 bg-[#abe4f7] text-white
-                    font-audiowide text-cent cursor-pointer"
+            className="bg-[#abe4f7] text-black font-audiowide px-6 py-3 rounded w-full flex items-center justify-center"
           >
-            {player_2_btn}
+            {player2 ? (
+              <img
+                src={`/${player2}.png`}
+                alt={player2}
+                className="h-12 w-12 object-contain"
+              />
+            ) : (
+              "Player 2"
+            )}
           </Button>
-          {/* Dropdown-meny */}
+
           {isOpen2 && (
-            <div className="absolute mt-2 w-28">
-              <ul className="">
-                {images.map((img, index) => (
-                  <button
-                    key={img}
-                    type="button"
-                    className="border cursor-pointer hover:bg-blue-600"
-                    onClick={() => {
-                      let selected_player = images[index];
-                      if (selected_player !== player1) {
-                        setplayer2(selected_player);
-                        // images.splice(index, 1)
-                        setIsOpen2(!isOpen2);
-                        set_player_2_btn(img);
-                        setError("");
-                      } else {
-                        setError("Begge kan ikke være samme karakter");
-                        //document.getElementById("error_tekst").innerText = "Spillerne kan ikke ha samme karakter";
-                      }
-                    }}
-                  >
-                    <img
-                      key={img + index.toString()}
-                      src={`${img}.png`}
-                      alt={`image-${index}`}
-                      className="h-30 lg:h-30"
-                    />
-                  </button>
-                ))}
-              </ul>
+            <div className="absolute top-full mt-2 w-full bg-white border rounded shadow-md max-h-64 overflow-y-auto p-2 z-10">
+              {characters.map((character) => (
+                <button
+                  key={character}
+                  onClick={() => {
+                    if (character === player1) {
+                      setError("Players cannot be the same character");
+                    } else {
+                      setPlayer2(character);
+                      setIsOpen2(false);
+                      setError("");
+                    }
+                  }}
+                  className="block w-full text-black hover:bg-blue-200 mb-2 last:mb-0"
+                >
+                  <img
+                    src={`/${character}.png`}
+                    alt={character}
+                    className="h-20 mx-auto"
+                  />
+                </button>
+              ))}
             </div>
           )}
         </div>
-        {visability && (
-          <div className="font-audiowide fixed left-1/2 top-3/4 transform -translate-x-1/2 bg-blue-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600 transition">
-            <button
-              id="begin_game"
-              type="button"
-              className=""
-              onClick={() => {
-                const players = Choose_player({ player1, player2 });
-              }}
-            >
-              Begin game
-            </button>
-          </div>
-        )}
       </div>
+
+      {/* Start Game Button */}
+      {player1 && player2 && !error && (
+        <button
+          onClick={() => onSelectPlayers(player1, player2)}
+          className="mt-6 bg-[#0022FF] border-[#000000] text-white font-audiowide px-8 py-3 rounded-lg shadow-lg hover:bg-blue-600"
+        >
+          Begin Game
+        </button>
+      )}
     </div>
   );
 }
