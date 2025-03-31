@@ -21,14 +21,16 @@ export default function Choose_player({ onSelectPlayers }: ChoosePlayerProps) {
   }, [player1, player2]);
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
-      <h1 className="font-audiowide text-5xl text-center mt-6 mb-12">
-        Choose Your Player
-      </h1>
+    <div className="h-screen flex flex-col items-center">
+      <div className="w-screen ">
+        <h1 className="font-audiowide text-5xl text-center mt-6 mb-12 filter: tracking-wide drop-shadow-xl" >
+          Choose Your Player
+        </h1>
+      </div>
 
       {error && <p className="text-red-500 mt-4">{error}</p>}
 
-      <div className="flex flex-col md:flex-row justify-center items-center gap-6 px-8 w-full max-w-md mx-auto">
+      <div className="flex flex-col md:flex-row justify-center items-center md:gap-30 gap-5 mt-18 px-8 w-full max-w-md mx-auto">
         {/* Player 1 Dropdown */}
         <div className="relative w-40">
           <Button
@@ -48,7 +50,7 @@ export default function Choose_player({ onSelectPlayers }: ChoosePlayerProps) {
           </Button>
 
           {isOpen1 && (
-            <div className="absolute top-full mt-2 w-full bg-white border rounded shadow-md max-h-64 overflow-y-auto p-2 z-10">
+            <div className="absolute top-full mt-2 w-full bg-white border rounded shadow-md max-h-70 overflow-y-auto p-2 z-10">
               {characters.map((character) => (
                 <button
                   key={character}
@@ -93,7 +95,7 @@ export default function Choose_player({ onSelectPlayers }: ChoosePlayerProps) {
           </Button>
 
           {isOpen2 && (
-            <div className="absolute top-full mt-2 w-full bg-white border rounded shadow-md max-h-64 overflow-y-auto p-2 z-10">
+            <div className="absolute top-full mt-2 w-full bg-white border rounded shadow-md max-h-70 overflow-y-auto p-2 z-10">
               {characters.map((character) => (
                 <button
                   key={character}
@@ -122,12 +124,13 @@ export default function Choose_player({ onSelectPlayers }: ChoosePlayerProps) {
 
       {/* Start Game Button */}
       {player1 && player2 && !error && (
-        <button
+        <Button
           onClick={() => onSelectPlayers(player1, player2)}
-          className="mt-6 bg-[#0022FF] border-[#000000] text-white font-audiowide px-8 py-3 rounded-lg shadow-lg hover:bg-blue-600"
+          variant="outline"
+          className="mt-25 bg-[#abe4f7] text-black font-audiowide px-8 py-3 rounded-lg shadow-lg"
         >
           Begin Game
-        </button>
+        </Button>
       )}
     </div>
   );
