@@ -1,3 +1,4 @@
+import { Key } from "react";
 import { useState } from "react";
 
 const winningCombinations = [
@@ -67,7 +68,7 @@ export default function Board({ player1, player2 }: BoardProps) {
       );
     }
 
-    if (currentBoard.every((square) => square !== null)) return "Draw!";
+    if (currentBoard.every((square: null) => square !== null)) return "Draw!";
 
     const nextPlayerImage = isPlayer1Turn ? player1 : player2;
 
@@ -107,28 +108,30 @@ export default function Board({ player1, player2 }: BoardProps) {
         </div>
 
         <div className="grid grid-cols-3 gap-1 rounded-xl overflow-hidden mb-6">
-          {currentBoard.map((square, index) => (
-            <button
-              key={index}
-              onClick={() => handleSquareClick(index)}
-              className="h-32 w-full bg-gray-800 rounded-md text-6xl font-light transition-colors duration-200 hover:bg-gray-700 flex items-center justify-center"
-            >
-              {square && (
-                <img
-                  src={`/${square}.png`}
-                  alt={square}
-                  className={`h-20 w-20 object-contain ${
-                    winningCombo?.includes(index) ? "animate-bounce" : ""
-                  }`}
-                />
-              )}
-            </button>
-          ))}
+          {currentBoard.map(
+            (square: string | undefined, index: Key | null | undefined) => (
+              <button
+                key={index}
+                onClick={() => handleSquareClick(index)}
+                className="h-32 w-full bg-gray-800 rounded-md text-6xl font-light transition-colors duration-200 hover:bg-gray-700 flex items-center justify-center"
+              >
+                {square && (
+                  <img
+                    src={`/${square}.png`}
+                    alt={square}
+                    className={`h-20 w-20 object-contain ${
+                      winningCombo?.includes(index) ? "animate-bounce" : ""
+                    }`}
+                  />
+                )}
+              </button>
+            )
+          )}
         </div>
 
         {/* Move History */}
         <div className="mb-4 flex flex-wrap gap-2 justify-center">
-          {history.map((_, move) => (
+          {history.map((_: any, move: Key | null | undefined) => (
             <button
               key={move}
               onClick={() => {
