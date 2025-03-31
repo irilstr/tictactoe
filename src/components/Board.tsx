@@ -58,7 +58,7 @@ export default function Board({ player1, player2 }: BoardProps) {
     const result = getWinner(currentBoard);
     if (result) {
       return (
-        <div className="flex items-center justify-center gap-3 text-2xl font-audiowide animate-bounce">
+        <div className="flex items-center justify-center gap-3 text-2xl font-audiowide ">
           Winner:
           <img
             src={`/${result.winner}.png`}
