@@ -28,7 +28,7 @@ export default function Choose_player({ onSelectPlayers }: ChoosePlayerProps) {
 
       {error && <p className="text-red-500 mt-4">{error}</p>}
 
-      <div className="flex gap-28 mt-8">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-6 px-8 w-full max-w-md mx-auto">
         {/* Player 1 Dropdown */}
         <div className="relative w-40">
           <Button
