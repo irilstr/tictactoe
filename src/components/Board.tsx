@@ -122,7 +122,8 @@ export default function Board({ player1, player2 }: BoardProps) {
         {/* Move History */}
         <div className="flex flex-wrap gap-2 justify-center mb-6">
           {history.map((_, move) => (
-            <button type="button"
+            <button
+              type="button"
               key={move}
               onClick={() => {
                 setCurrentMove(move);
