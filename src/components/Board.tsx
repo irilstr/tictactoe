@@ -94,10 +94,6 @@ export default function Board({ player1, player2 }: BoardProps) {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-[400px] mx-5">
-        <h1 className="text-5xl font-audiowide text-black mb-8 text-center">
-          Tic Tac Toe
-        </h1>
-
         <div className="text-center mb-6">{getGameStatus()}</div>
 
         <div className="grid grid-cols-3 gap-1 rounded-xl overflow-hidden mb-6">
@@ -126,7 +122,7 @@ export default function Board({ player1, player2 }: BoardProps) {
         {/* Move History */}
         <div className="flex flex-wrap gap-2 justify-center mb-6">
           {history.map((_, move) => (
-            <button
+            <button type="button"
               key={move}
               onClick={() => {
                 setCurrentMove(move);
