@@ -9,7 +9,7 @@ function App() {
   const [player2, setPlayer2] = useState<string | null>(null);
 
   return (
-    <div className="h-screen flex flex-col bg-[#3CB4E8]">
+    <div className="h-screen flex flex-col bg-[#ffffff]">
       {!hasStarted ? (
         <StartGame onStart={() => setHasStarted(true)} />
       ) : !player1 || !player2 ? (
