@@ -67,7 +67,7 @@ export default function Board({ player1, player2 }: BoardProps) {
     const nextPlayerImage = isPlayer1Turn ? player1 : player2;
 
     return (
-      <div className="flex items-center justify-center gap-3 text-xl text-white">
+      <div className="flex items-center justify-center gap-3 text-xl text-black">
         Next player:
         <img
           src={`/${nextPlayerImage}.png`}
@@ -87,15 +87,15 @@ export default function Board({ player1, player2 }: BoardProps) {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-[400px] mx-5">
-        <h1 className="text-5xl font-semibold text-white mb-8 text-center">
+        <h1 className="text-5xl font-semibold text-black mb-8 text-center">
           Tic Tac Toe
         </h1>
 
         <div
           className={`text-center mb-6 ${
             winningCombo
-              ? "text-2xl font-bold text-white animate-bounce"
-              : "text-xl text-white"
+              ? "text-2xl font-bold text-black animate-bounce"
+              : "text-xl text-black"
           }`}
         >
           {getGameStatus()}
@@ -103,7 +103,7 @@ export default function Board({ player1, player2 }: BoardProps) {
 
         <div className="grid grid-cols-3 gap-1 rounded-xl overflow-hidden mb-6">
           {board.map((square, index) => (
-            <button
+            <button type="button"
               key={index}
               onClick={() => handleSquareClick(index)}
               className="h-32 w-full bg-gray-800 rounded-md text-6xl font-light transition-colors duration-200 hover:bg-gray-700 flex items-center justify-center"
@@ -121,8 +121,8 @@ export default function Board({ player1, player2 }: BoardProps) {
           ))}
         </div>
 
-        <button
-          className="w-full py-3 text-lg text-white border rounded-xl hover:bg-gray-50 hover:text-gray-800 transition-colors duration-200"
+        <button type="button"
+          className="w-full py-3 text-lg text-black border rounded-xl hover:bg-gray-50 hover:text-gray-800 transition-colors duration-200"
           onClick={resetGame}
         >
           New Game

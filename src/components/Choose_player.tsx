@@ -21,20 +21,22 @@ export default function Choose_player({ onSelectPlayers }: ChoosePlayerProps) {
   }, [player1, player2]);
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
-      <h1 className="font-audiowide text-5xl text-center mt-6 mb-12">
-        Choose Your Player
-      </h1>
+    <div className="h-screen flex flex-col items-center">
+      <div className="w-screen ">
+        <h1 className="font-audiowide text-5xl text-center mt-6 mb-12 filter: tracking-wide drop-shadow-xl" >
+          Choose Your Player
+        </h1>
+      </div>
 
       {error && <p className="text-red-500 mt-4">{error}</p>}
 
-      <div className="flex gap-28 mt-8">
+      <div className="flex gap-20 mt-18">
         {/* Player 1 Dropdown */}
         <div className="relative w-40">
           <Button
             onClick={() => setIsOpen1(!isOpen1)}
             variant="outline"
-            className="bg-[#abe4f7] text-black font-audiowide px-6 py-3 rounded w-full flex items-center justify-center"
+            className="bg-[#aadcef] text-black font-audiowide px-6 py-3 rounded w-full flex items-center justify-center"
           >
             {player1 ? (
               <img
@@ -48,9 +50,9 @@ export default function Choose_player({ onSelectPlayers }: ChoosePlayerProps) {
           </Button>
 
           {isOpen1 && (
-            <div className="absolute top-full mt-2 w-full bg-white border rounded shadow-md max-h-64 overflow-y-auto p-2 z-10">
+            <div className="absolute top-full mt-2 w-full bg-[#f2f8fa] border rounded shadow-md max-h-70 overflow-y-auto p-2 z-10">
               {characters.map((character) => (
-                <button
+                <button type="button"
                   key={character}
                   onClick={() => {
                     if (character === player2) {
@@ -79,7 +81,7 @@ export default function Choose_player({ onSelectPlayers }: ChoosePlayerProps) {
           <Button
             onClick={() => setIsOpen2(!isOpen2)}
             variant="outline"
-            className="bg-[#abe4f7] text-black font-audiowide px-6 py-3 rounded w-full flex items-center justify-center"
+            className="bg-[#aadcef] text-black font-audiowide px-6 py-3 rounded w-full flex items-center justify-center"
           >
             {player2 ? (
               <img
@@ -93,9 +95,9 @@ export default function Choose_player({ onSelectPlayers }: ChoosePlayerProps) {
           </Button>
 
           {isOpen2 && (
-            <div className="absolute top-full mt-2 w-full bg-white border rounded shadow-md max-h-64 overflow-y-auto p-2 z-10">
+            <div className="absolute top-full mt-2 w-full bg-[#f2f8fa]   rounded shadow-md max-h-64 overflow-y-auto p-2 z-10">
               {characters.map((character) => (
-                <button
+                <button type="button"
                   key={character}
                   onClick={() => {
                     if (character === player1) {
@@ -122,9 +124,9 @@ export default function Choose_player({ onSelectPlayers }: ChoosePlayerProps) {
 
       {/* Start Game Button */}
       {player1 && player2 && !error && (
-        <button
+        <button type="button"
           onClick={() => onSelectPlayers(player1, player2)}
-          className="mt-6 bg-[#0022FF] border-[#000000] text-white font-audiowide px-8 py-3 rounded-lg shadow-lg hover:bg-blue-600"
+          className="mt-18 bg-[#0022FF] border-[#000000] text-white font-audiowide px-8 py-3 rounded-lg shadow-lg hover:bg-blue-600"
         >
           Begin Game
         </button>

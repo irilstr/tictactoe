@@ -7,7 +7,7 @@ function App() {
   const [player2, setPlayer2] = useState<string | null>(null);
 
   return (
-    <div className="h-screen flex flex-col bg-[#3CB4E8]">
+    <div className="h-screen flex flex-col bg-[#ffffff]">
       {!player1 || !player2 ? (
         <Choose_player
           onSelectPlayers={(p1, p2) => {
