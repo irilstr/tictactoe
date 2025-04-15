@@ -1,4 +1,11 @@
-# Vektor Homepage
+# TicTacToe
+
+A simple implementation of the classic Tic Tac Toe game.  
+This was the first project developed by me and my teammate as part of our onboarding in Vektorprogrammet IT.
+
+The game is designed to be a small, interactive element on the Vektor homepage that anyone can click on and play.
+
+## Vektor Homepage
 
 Vektorprogrammets Tic Tac Toe
 
