@@ -6,7 +6,7 @@ interface ChoosePlayerProps {
 }
 
 export default function Choose_player({ onSelectPlayers }: ChoosePlayerProps) {
-  const characters = ["Bjorn", "Elephant", "Lemur"];
+  const characters = ["Bjorn", "elephant", "lemur"];
 
   const [player1, setPlayer1] = useState<string | null>(null);
   const [player2, setPlayer2] = useState<string | null>(null);

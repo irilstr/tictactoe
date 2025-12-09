@@ -8,10 +8,10 @@ export default function StartGame({ onStart }: StartGameProps) {
   return (
     <div className="w-screen h-screen flex flex-row items-center justify-center gap-4 mb-30">
       <div>
-        <img src="Elephant.png" alt="elephant" className="h-30 lg:h-40" />
+        <img src="elephant.png" alt="elephant" className="h-30 lg:h-40" />
       </div>
       <div className="flex flex-col items-center justify-center gap-2">
-        <img src="Lemur.png" alt="lemur" className="h-30 lg:h-40" />
+        <img src="lemur.png" alt="lemur" className="h-30 lg:h-40" />
 
         <div className="border-4 border-[#abe4f7] px-6 py-8 md:px-10 md:py-12">
           <h1 className="text-3xl md:text-5xl font-bold text-center leading-[2.5rem] md:leading-[4rem]">
